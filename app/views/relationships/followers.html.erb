@@ -1,0 +1,20 @@
+<div class='container'>
+    <h1>Follower Users</h1>
+    <div class='row'>
+        <% unless @user.followings.count == 0 %>
+            <% @followed_users.each do |user| %>
+              <table>
+                  <tr>
+                    <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
+                    <td><%= user.name %></td>
+                    <td><%= link_to 'Show', user, class: "user_#{user.id}" %></td>
+                    <td>フォロー数 :<%= user.followings.count %></td>
+                    <td>フォロワー数 :<%= user.followers.count %></td>
+                  </tr>
+              </table>
+            <% end %>
+        <% else %>
+           <h4>ユーザーは存在しません</h4>
+        <% end %>
+     </div>
+</div>
